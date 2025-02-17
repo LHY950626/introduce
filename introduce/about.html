@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>캐릭터 소개</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        header h1 {
+            font-size: 36px;
+            color: #333;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .character-card {
+            display: flex;
+            align-items: center;
+            /* 이미지와 텍스트를 수평으로 정렬 */
+            justify-content: flex-start;
+            /* 왼쪽 정렬 */
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .button-container {
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            /* 버튼을 세로로 배치 */
+            align-items: center;
+            /* 버튼을 중앙에 정렬 */
+        }
+
+        .back-button {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            padding: 12px 24px;
+            font-size: 18px;
+            background-color: #ff5722;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-button:hover {
+            background-color: #e64a19;
+            transform: translateY(-3px);
+        }
+
+        .back-button:active {
+            transform: translateY(1px);
+        }
+
+        .back-button:focus {
+            outline: none;
+        }
+
+        .character-card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-right: 20px;
+            /* 이미지와 텍스트 사이에 간격 추가 */
+            transition: transform 1s ease;
+        }
+
+        .character-info h2 {
+            font-size: 24px;
+            color: #333;
+            margin: 0;
+        }
+
+        .character-info p {
+            font-size: 18px;
+            color: #555;
+            margin-top: 10px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 14px;
+            color: #777;
+        }
+
+        /* 반응형 디자인 */
+        @media (max-width: 768px) {
+            .character-card {
+                flex-direction: column;
+                /* 작은 화면에서는 세로로 정렬 */
+                text-align: center;
+            }
+
+            .character-card img {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+        }
+
+        /* 버튼 스타일 */
+        .btn {
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #ff5722;
+            /* 버튼 색 */
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn:hover {
+            background-color: #e64a19;
+            /* hover 시 색상 변화 */
+            transform: translateY(-3px);
+            /* 버튼이 살짝 위로 올라가는 효과 */
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+            /* 클릭 시 버튼이 살짝 눌리는 효과 */
+        }
+
+        .btn:focus {
+            outline: none;
+            /* 클릭 시 테두리 제거 */
+        }
+    </style>
+</head>
+
+<body >
+    <button class="back-button" onclick="window.location.href='introduce.html'">&lt; 이전 페이지</button>
+    <header>
+        <h1>캐릭터 소개</h1>
+    </header>
+
+    <div class="container">
+        <!-- 캐릭터 1 -->
+        <div class="character-card">
+            <img id="characterImage1" src="/아구몬1.jpg" alt="Character 1">
+            <div class="character-info">
+                <h2>아구몬</h2>
+                <p>신태일의 파트너</p>
+            </div>
+
+            <div class="button-container">
+                <button class="btn" onclick="zoomImage('ultimate', 'characterImage1')">성숙기</button>
+                <button class="btn" onclick="zoomImage('digivolved', 'characterImage1')">완전체</button>
+                <button class="btn" onclick="zoomImage('mega', 'characterImage1')">궁극체</button> <!-- 새로운 버튼 추가 -->
+                <button class="btn" onclick="resetImage('characterImage1')">되돌아가기</button>
+            </div>
+
+        </div>
+
+        <!-- 캐릭터 2 -->
+        <div class="character-card">
+            <img id="characterImage2" src="/파피몬1.jpg" alt="Character 2">
+            <div class="character-info">
+                <h2>파피몬</h2>
+                <p>매튜의 파트너</p>
+            </div>
+
+            <div class="button-container">
+                <button class="btn" onclick="zoomImage('ultimate', 'characterImage2')">성숙기</button>
+                <button class="btn" onclick="zoomImage('digivolved', 'characterImage2')">완전체</button>
+                <button class="btn" onclick="zoomImage('mega', 'characterImage2')">궁극체</button> <!-- 새로운 버튼 추가 -->
+                <button class="btn" onclick="resetImage('characterImage2')">되돌아가기</button>
+            </div>
+        </div>
+
+        <!-- 캐릭터 3 -->
+        <div class="character-card">
+            <img id="characterImage3" src="/가트몬1.jpg" alt="Character 3">
+            <div class="character-info">
+                <h2>가트몬</h2>
+                <p>신나리의 파트너</p>
+            </div>
+
+            <div class="button-container">
+                <button class="btn" onclick="zoomImage('ultimate', 'characterImage3')">성숙기</button>
+                <button class="btn" onclick="zoomImage('digivolved', 'characterImage3')">완전체</button>
+                <button class="btn" onclick="zoomImage('mega', 'characterImage3')">궁극체</button> <!-- 새로운 버튼 추가 -->
+                <button class="btn" onclick="resetImage('characterImage3')">되돌아가기</button>
+            </div>
+        </div>
+
+        <!-- 캐릭터 4 -->
+        <div class="character-card">
+            <img id="characterImage4" src="/쉬라몬1.jpg" alt="Character 4">
+            <div class="character-info">
+                <h2>쉬라몬</h2>
+                <p>정석의 파트너</p>
+            </div>
+
+            <div class="button-container">
+                <button class="btn" onclick="zoomImage('ultimate', 'characterImage4')">성숙기</button>
+                <button class="btn" onclick="zoomImage('digivolved', 'characterImage4')">완전체</button>
+                <button class="btn" onclick="zoomImage('mega', 'characterImage4')">궁극체</button> <!-- 새로운 버튼 추가 -->
+                <button class="btn" onclick="resetImage('characterImage4')">되돌아가기</button>
+            </div>
+        </div>
+
+        <!-- 캐릭터 5 -->
+        <div class="character-card">
+            <img id="characterImage5" src="/텐타몬1.jpg" alt="Character 5">
+            <div class="character-info">
+                <h2>텐타몬</h2>
+                <p>장한솔의 파트너</p>
+            </div>
+
+            <div class="button-container">
+                <button class="btn" onclick="zoomImage('ultimate', 'characterImage5')">성숙기</button>
+                <button class="btn" onclick="zoomImage('digivolved', 'characterImage5')">완전체</button>
+                <button class="btn" onclick="zoomImage('mega', 'characterImage5')">궁극체</button> <!-- 새로운 버튼 추가 -->
+                <button class="btn" onclick="resetImage('characterImage5')">되돌아가기</button>
+            </div>
+        </div>
+
+        <!-- 캐릭터 6 -->
+        <div class="character-card">
+            <img id="characterImage6" src="/파닥몬1.jpg" alt="Character 6">
+            <div class="character-info">
+                <h2>파닥몬</h2>
+                <p>리키의 파트너</p>
+            </div>
+
+            <div class="button-container">
+                <button class="btn" onclick="zoomImage('ultimate', 'characterImage6')">성숙기</button>
+                <button class="btn" onclick="zoomImage('digivolved', 'characterImage6')">완전체</button>
+                <button class="btn" onclick="zoomImage('mega', 'characterImage6')">궁극체</button> <!-- 새로운 버튼 추가 -->
+                <button class="btn" onclick="resetImage('characterImage6')">되돌아가기</button>
+            </div>
+        </div>
+
+        <!-- 캐릭터 7 -->
+        <div class="character-card">
+            <img id="characterImage7" src="/팔몬1.jpg" alt="Character 7">
+            <div class="character-info">
+                <h2>팔몬</h2>
+                <p>이미나의 파트너</p>
+            </div>
+
+            <div class="button-container">
+                <button class="btn" onclick="zoomImage('ultimate', 'characterImage7')">성숙기</button>
+                <button class="btn" onclick="zoomImage('digivolved', 'characterImage7')">완전체</button>
+                <button class="btn" onclick="zoomImage('mega', 'characterImage7')">궁극체</button> <!-- 새로운 버튼 추가 -->
+                <button class="btn" onclick="resetImage('characterImage7')">되돌아가기</button>
+            </div>
+        </div>
+
+        <!-- 캐릭터 8 -->
+        <div class="character-card">
+            <img id="characterImage8" src="/피요몬1.jpg" alt="Character 8">
+            <div class="character-info">
+                <h2>피요몬</h2>
+                <p>한소라의 파트너</p>
+            </div>
+
+            <div class="button-container">
+                <button class="btn" onclick="zoomImage('ultimate', 'characterImage8')">성숙기</button>
+                <button class="btn" onclick="zoomImage('digivolved', 'characterImage8')">완전체</button>
+                <button class="btn" onclick="zoomImage('mega', 'characterImage8')">궁극체</button> <!-- 새로운 버튼 추가 -->
+                <button class="btn" onclick="resetImage('characterImage8')">되돌아가기</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 캐릭터 소개. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>
+<script>
+    // 이미지 확대 및 변경 기능
+    function zoomImage(type, characterId) {
+        const img = document.getElementById(characterId);
+        const characterName = document.querySelector(`#${characterId} + .character-info h2`);
+
+        // 성숙기 (Ultimate)
+        if (type === 'ultimate') {
+            if (characterId === 'characterImage1') {
+                img.src = '/그레이몬.jpg';  // 아구몬의 성숙기 이미지
+                characterName.textContent = '그레이몬';  // 이름을 그레이몬으로 변경
+            } else if (characterId === 'characterImage2') {
+                img.src = '/가루몬.jpg';  // 파피몬의 성숙기 이미지
+                characterName.textContent = '가루몬';  // 이름을 가루몬으로 변경
+            } else if (characterId === 'characterImage3') {
+                img.src = '/가트몬해린.jpg';  // 가트몬의 성숙기 이미지
+                characterName.textContent = '가트몬';  // 이름을 가트몬으로 변경
+            } else if (characterId === 'characterImage4') {
+                img.src = '/원뿔몬.jpg';  // 쉬라몬의 성숙기 이미지
+                characterName.textContent = '원뿔몬';  // 이름을 원뿔몬으로 변경
+            } else if (characterId === 'characterImage5') {
+                img.src = '/캅테리몬.jpg';  // 텐타몬의 성숙기 이미지
+                characterName.textContent = '캅테리몬';  // 이름을 캅테리몬으로 변경
+            } else if (characterId === 'characterImage6') {
+                img.src = '/엔젤몬.jpg';  // 파닥몬의 성숙기 이미지
+                characterName.textContent = '엔젤몬';  // 이름을 엔젤몬으로 변경
+            } else if (characterId === 'characterImage7') {
+                img.src = '/니드몬.jpg';  // 팔몬의 성숙기 이미지
+                characterName.textContent = '니드몬';  // 이름을 니드몬으로 변경
+            } else if (characterId === 'characterImage8') {
+                img.src = '/버드라몬.jpg';  // 피요몬의 성숙기 이미지
+                characterName.textContent = '버드라몬';  // 이름을 버드라몬으로 변경
+            }
+            img.style.transform = 'scale(2)';
+        }
+
+        // 완전체 (Digivolved)
+        else if (type === 'digivolved') {
+            if (characterId === 'characterImage1') {
+                img.src = '/메탈그레이몬.jpg';  // 아구몬의 완전체 이미지
+                characterName.textContent = '메탈그레이몬';  // 이름을 메탈그레이몬으로 변경
+            } else if (characterId === 'characterImage2') {
+                img.src = '/워가루몬.jpg';  // 파피몬의 완전체 이미지
+                characterName.textContent = '워가루몬';  // 이름을 워가루몬으로 변경
+            } else if (characterId === 'characterImage3') {
+                img.src = '/엔젤우몬.jpg';  // 가트몬의 완전체 이미지
+                characterName.textContent = '엔젤우몬';  // 이름을 엔젤우몬으로 변경
+            } else if (characterId === 'characterImage4') {
+                img.src = '/쥬드몬.jpg';  // 쉬라몬의 완전체 이미지
+                characterName.textContent = '쥬드몬';  // 이름을 쥬드몬으로 변경
+            } else if (characterId === 'characterImage5') {
+                img.src = '/아트라캅테리몬.jpg';  // 텐타몬의 완전체 이미지
+                characterName.textContent = '아트라캅테리몬';  // 이름을 아트라캅테리몬으로 변경
+            } else if (characterId === 'characterImage6') {
+                img.src = '/홀리엔젤몬.jpg';  // 파닥몬의 완전체 이미지
+                characterName.textContent = '홀리엔젤몬';  // 이름을 홀리엔젤몬으로 변경
+            } else if (characterId === 'characterImage7') {
+                img.src = '/릴리몬.jpg';  // 팔몬의 완전체 이미지
+                characterName.textContent = '릴리몬';  // 이름을 릴리몬으로 변경
+            } else if (characterId === 'characterImage8') {
+                img.src = '/가루다몬.jpg';  // 피요몬의 완전체 이미지
+                characterName.textContent = '가루다몬';  // 이름을 가루다몬으로 변경
+            }
+            img.style.transform = 'scale(3)';
+        }
+
+        // 궁극체 (Mega)
+        else if (type === 'mega') {
+            if (characterId === 'characterImage1') {
+                img.src = '/워그레이몬.jpg';  // 아구몬의 궁극체 이미지
+                characterName.textContent = '워그레이몬';  // 이름을 워그레이몬으로 변경
+            } else if (characterId === 'characterImage2') {
+                img.src = '/메탈가루몬.jpg';  // 파피몬의 궁극체 이미지
+                characterName.textContent = '메탈가루몬';  // 이름을 메탈가루몬으로 변경
+            } else if (characterId === 'characterImage3') {
+                img.src = '/세라피몬.jpg';  // 가트몬의 궁극체 이미지
+                characterName.textContent = '세라피몬';  // 이름을 세라피몬으로 변경
+            } else if (characterId === 'characterImage4') {
+                img.src = '/바이킹몬.jpg';  // 쉬라몬의 궁극체 이미지
+                characterName.textContent = '바이킹몬';  // 이름을 바이킹몬으로 변경
+            } else if (characterId === 'characterImage5') {
+                img.src = '/헤라클레스캅테리몬.jpg';  // 텐타몬의 궁극체 이미지
+                characterName.textContent = '헤라클레스캅테리몬';  // 이름을 헤라클레스캅테리몬으로 변경
+            } else if (characterId === 'characterImage6') {
+                img.src = '/오파니몬.jpg';  // 파닥몬의 궁극체 이미지
+                characterName.textContent = '오파니몬';  // 이름을 오파니몬으로 변경
+            } else if (characterId === 'characterImage7') {
+                img.src = '/로제몬.jpg';  // 팔몬의 궁극체 이미지
+                characterName.textContent = '로제몬';  // 이름을 로제몬으로 변경
+            } else if (characterId === 'characterImage8') {
+                img.src = '/피닉스몬.jpg';  // 피요몬의 궁극체 이미지
+                characterName.textContent = '피닉스몬';  // 이름을 피닉스몬으로 변경
+            }
+            img.style.transform = 'scale(4)';
+        }
+
+        // 이미지 확대 효과 후 원래 크기로 돌아옴
+        setTimeout(() => {
+            img.style.transform = 'scale(1)';
+        }, 2000);
+
+    }
+    function resetImage(characterId) {
+        const img = document.getElementById(characterId);
+        const characterName = document.querySelector(`#${characterId} + .character-info h2`);
+
+        // 원래 이미지와 이름으로 되돌리기
+        if (characterId === 'characterImage1') {
+            img.src = '/아구몬1.jpg';  // 아구몬의 원래 이미지
+            characterName.textContent = '아구몬';  // 원래 이름
+        } else if (characterId === 'characterImage2') {
+            img.src = '/파피몬1.jpg';  // 파피몬의 원래 이미지
+            characterName.textContent = '파피몬';  // 원래 이름
+        } else if (characterId === 'characterImage3') {
+            img.src = '/가트몬1.jpg';  // 가트몬의 원래 이미지
+            characterName.textContent = '가트몬';  // 원래 이름
+        } else if (characterId === 'characterImage4') {
+            img.src = '/쉬라몬1.jpg';  // 쉬라몬의 원래 이미지
+            characterName.textContent = '쉬라몬';  // 원래 이름
+        } else if (characterId === 'characterImage5') {
+            img.src = '/텐타몬1.jpg';  // 텐타몬의 원래 이미지
+            characterName.textContent = '텐타몬';  // 원래 이름
+        } else if (characterId === 'characterImage6') {
+            img.src = '/파닥몬1.jpg';  // 파닥몬의 원래 이미지
+            characterName.textContent = '파닥몬';  // 원래 이름
+        } else if (characterId === 'characterImage7') {
+            img.src = '/팔몬1.jpg';  // 팔몬의 원래 이미지
+            characterName.textContent = '팔몬';  // 원래 이름
+        } else if (characterId === 'characterImage8') {
+            img.src = '/피요몬1.jpg';  // 피요몬의 원래 이미지
+            characterName.textContent = '피요몬';  // 원래 이름
+        }
+
+        img.style.transform = 'scale(1)';  // 이미지 크기를 원래대로 되돌리기
+    }
+
+
+
+</script>

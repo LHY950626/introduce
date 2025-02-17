@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url(/bigsize.jpg);
+            /* 배경 이미지 URL 추가 */
+            background-size: cover;
+            /* 배경 이미지가 화면을 채우도록 설정 */
+            background-position: center;
+            /* 배경 이미지가 중앙에 오도록 설정 */
+            background-attachment: fixed;
+            /* 스크롤 시 배경 이미지가 고정되도록 설정 */
+            color: white;
+            /* 글씨 색상 */
+            cursor: url(/vice.png)32 32, auto;
+            /* 커서 이미지 경로를 원하는 이미지로 설정 */
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            color: rgb(22, 243, 166);
+            /* 제목 글자 색을 흰색으로 설정 */
+            font-size: 36px;
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.5);
+            /* 흰색 배경, 투명도 조절 */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 10%;
+            margin-right: 20px;
+        }
+
+        .info h2 {
+            font-size: 24px;
+            color: #7f00f6;
+            /* 이름을 파란색으로 설정 */
+        }
+
+        .info p {
+            font-size: 18px;
+            color: #000000;
+            /* 설명 글자 색을 어두운 색으로 설정 */
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 14px;
+            color: white;
+            /* 푸터 글자 색을 흰색으로 설정 */
+        }
+
+        .email-icon {
+            font-size: 24px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .email-icon:hover {
+            color: #FFD700;
+            /* 이메일 아이콘을 노란색으로 설정 */
+        }
+
+        nav {
+            background-color: rgba(rgb(177, 177, 177), rgb(181, 181, 181), rgb(168, 168, 168), 10);
+            /* 네비게이션 바를 어두운 파란색으로 설정 */
+            padding: 10px 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #007BFF;
+            /* 메뉴 항목 배경색 파란색 */
+        }
+
+        nav ul li a:hover {
+            background-color: #0056b3;
+            /* 메뉴 항목 호버 시 색상 변경 */
+        }
+
+        /* 8명의 작은 사진을 우측 하단에 배치 */
+        .thumbnails {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .thumbnails img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .thumbnails img:hover {
+            transform: scale(1.1); /* 이미지 크기 확대 효과 */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="about.html">디지몬 소개</a></li>
+                <li><a href="#services">명언</a></li>
+                <li><a href="#contact">굿즈</a></li>
+            </ul>
+        </nav>
+        <header>
+            <h1>DIGITAL MONSTER (DIGIMON)</h1>
+        </header>
+
+        <!-- 프로필 섹션 -->
+        <section class="profile" id="profileSection">
+            <img src="/다운로드.jpg" alt="Profile Picture" class="profile-img" id="profileImage">
+            <div class="info">
+                <h2 id="profileName">신태일</h2>
+                <p id="profileDescription">말보다는 행동이 앞서는 타입으로
+                    자기 주장이 강하고 리더십이 있어 선택받은 아이들의 실질적인 리더 역할을 수행하고 있다.</p>
+                <p><img src="/아구몬.jpg" style="width: 200px;height:200px;" id="infoImage"></p>
+            </div>
+        </section>
+
+        <!-- 작은 사진들 (우측 하단) -->
+        <div class="thumbnails">
+            <img src="/다운로드.jpg" alt="신태일" onclick="changeProfile(0)">
+            <img src="/리키.jpg" alt="리키" onclick="changeProfile(1)">
+            <img src="/매튜.jpg" alt="매튜" onclick="changeProfile(2)">
+            <img src="/신나리.jpg" alt="신나리" onclick="changeProfile(3)">
+            <img src="/이미나.jpg" alt="이미나" onclick="changeProfile(4)">
+            <img src="/장한솔.jpg" alt="장한솔" onclick="changeProfile(5)">
+            <img src="/정석.jpg" alt="정석" onclick="changeProfile(6)">
+            <img src="/한소라.jpg" alt="한소라" onclick="changeProfile(7)">
+        </div>
+
+        <footer>
+            <p>&copy; 2025 DIGIMON. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // 이미지와 텍스트를 바꿀 배열 정의
+        const images = [
+            { profileImg: '/다운로드.jpg', infoImg: '/아구몬.jpg', name: '신태일', description: '말보다는 행동이 앞서는 타입으로 자기 주장이 강하고 리더십이 있어 선택받은 아이들의 실질적인 리더 역할을 수행하고 있다.' },
+            { profileImg: '/리키.jpg', infoImg: '/파닥몬.jpg', name: '리키', description: '어리고 순진하지만 때때로 형(매튜)의 과보호를 거부하고 굳세게 행동하는 캐릭터로 ,할 때는 하는 성격을 가진 아이다.' },
+            { profileImg: '/매튜.jpg', infoImg: '/파피몬.jpg', name: '매튜', description: '신중하고 냉철한 편이지만 속은 열혈한이다. 이 때문에 냉철함을 유지해야 한다고 스스로를 옭아매고 신태일이 무모한 판단을 할 때마다 충돌하여 크게 싸운적도 많은 라이벌 캐릭터.' },
+            { profileImg: '/신나리.jpg', infoImg: '/가트몬.jpg', name: '신나리', description: '착한 마음씨를 가지고 있는데 보통 일반인들과 다르게 수수께끼의 힘을 발휘할 수 있디.' },
+            { profileImg: '/이미나.jpg', infoImg: '/팔몬.jpg', name: '이미나', description: '전형적인 공주님 컨셉의 어리광쟁이로 곧잘 힘들어하고 본인의 기분에 따라 투정과 짜증을 잘 내지만 감정 표현에 솔직하고 밝은 성격으로 분위기 메이커의 역할을 한다.' },
+            { profileImg: '/장한솔.jpg', infoImg: '/텐타몬.jpg', name: '장한솔', description: '내성적이지만 일행의 브레인으로서 가야할 길을 계속 제시하고 앞 일을 계획하며, 특유의 호기심으로 디지털 월드 자체에 관심을 가지고 분석하는 작중의 주요 해설역이기도 하다.절하고 신뢰감 넘치는 사람으로, 항상 주변 사람들을 돕고 싶어 한다.' },
+            { profileImg: '/정석.jpg', infoImg: '/쉬라몬.jpg', name: '정석', description: ' 느긋하고 낙천적인 파트너 쉬라몬과는 정반대로 고지식하고 겁이 많으며 우유부단한 성격 때문에 아이들과 지내는데 어려움을 겪지만, 본인이 최연장자로서 자각도 하고 있고 책임감을 가지고 일행을 이끌려 한다.' },
+            { profileImg: '/한소라.jpg', infoImg: '/피요몬.jpg', name: '한소라', description: '일행에서 엄마와 같은 포지션으로 어른스러움을 발휘해 안 좋은 상황에서 절망할 수 있는 아이들에게 힘을 주고 그들을 보살피지만 정작 자신의 감정은 묻어두고 있는 것에 힘들어 하고 있었다. ' }
+        ];
+
+        // 이미지와 텍스트를 바꿀 함수
+        function changeProfile(index) {
+            document.getElementById('profileImage').src = images[index].profileImg;
+            document.getElementById('infoImage').src = images[index].infoImg;
+            document.getElementById('profileName').innerText = images[index].name;
+            document.getElementById('profileDescription').innerText = images[index].description;
+        }
+    </script>
+</body>
+
+</html>
