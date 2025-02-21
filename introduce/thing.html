@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>명언 페이지</title>
+    <style>
+        /* 기본 스타일 */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e0f7fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('../background.jpg'); /* 배경 이미지 */
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+            margin: 30px;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 48px;
+            font-weight: 600;
+            color: #1a73e8;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .quote-card {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff;
+            margin: 20px 0;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            flex-wrap: wrap;
+            text-align: center; /* 텍스트 중앙 정렬 */
+        }
+
+        .quote-card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 15px;
+            object-fit: cover;
+            margin-right: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .quote-card .quote {
+            font-size: 24px;
+            color: #555;
+            font-style: italic;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .quote-card .author {
+            font-size: 22px;
+            font-weight: 500;
+            color: #1a73e8;
+            margin-top: 10px;
+        }
+
+        /* 이미지 확대 효과 */
+        .quote-card img.active {
+            transform: scale(1.8); /* 이미지 크기 확대 */
+            z-index: 10;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .quote-card:hover {
+            transform: translateY(-10px); /* 카드가 위로 올라오는 효과 */
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        /* 클릭시 이미지 확대 */
+        .quote-card img:hover {
+            transform: scale(1.1);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        footer a {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>명언 모음</h1>
+
+        <!-- 첫 번째 명언 카드 -->
+        <div class="quote-card" onclick="toggleZoom(this)">
+            <img src="../나보다 나약한.jpg" alt="Person 1">
+            <div>
+                <p class="quote">"나약한 상대의 말은 듣지않는다"</p>
+                <p class="author">- 블랙워그레이몬</p>
+            </div>
+        </div>
+
+        <!-- 두 번째 명언 카드 -->
+        <div class="quote-card" onclick="toggleZoom(this)">
+            <img src="../파괴.jpg" alt="Person 2">
+            <div>
+                <p class="quote">"코딩하다 화가난 블랙워그레이몬"</p>
+                <p class="author">- 블랙워그레이몬</p>
+            </div>
+        </div>
+
+        <!-- 세 번째 명언 카드 -->
+        <div class="quote-card" onclick="redirectToVideo()">
+            <img src="../파닥몬진화.jpg" alt="Person 3">
+            <div>
+                <p class="quote">"악당<데블몬>과 상대중 다른 친구들은 모두 진화하여 힘겹게 싸우는데 혼자만 진화하지 못해 좌절하는 파닥몬 결국 진화하여 하드캐리한다.."</p>
+                <p class="author">- 파닥몬</p>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+       
+    </footer>
+
+    <script>
+        // 클릭한 카드에서 이미지에 확대/축소 클래스를 토글하는 함수
+        function toggleZoom(card) {
+            const image = card.querySelector('img');
+            image.classList.toggle('active');
+        }
+
+        // 파닥몬을 클릭시 1초 후에 유튜브 링크로 리디렉션하는 함수
+        function redirectToVideo() {
+            setTimeout(function() {
+                window.location.href = "https://www.youtube.com/watch?v=zpB8FJxBgu4"; // 1초 후에 해당 링크로 이동
+            }, 100); // 1000 밀리초 (1초)
+        }
+    </script>
+</body>
+
+</html>
